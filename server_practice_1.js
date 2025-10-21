@@ -4,21 +4,21 @@ app.use(express.json());
 
 // 🧠 GOAL: fill in each route below based on the instructions
 
-app.get("/welcome", (req, res) => {
-  res.send("Welcome to Express Practice!");
-});
+// app.get("/welcome", (req, res) => {
+//   res.send("Welcome to Express Practice!");
+// });
 
-app.get("/route", (req, res) => {
-  res.json({
-    name: "Xavier",
-    favoriteLanguage: "JavaScript",
-    hobby: "Martial Arts",
-  });
-});
+// app.get("/route", (req, res) => {
+//   res.json({
+//     name: "Xavier",
+//     favoriteLanguage: "JavaScript",
+//     hobby: "Martial Arts",
+//   });
+// });
 
-app.get("/status", (req, res) => {
-  res.status(201).send("Everything is working fine!");
-});
+// app.get("/status", (req, res) => {
+//   res.status(201).send("Everything is working fine!");
+// });
 
 app.get("/random", (req, res) => {
   const a = Math.floor(Math.random() * 100); // random number 0–99
@@ -28,10 +28,32 @@ app.get("/random", (req, res) => {
   res.json({ a, b, difference });
 });
 
-app.use((req, res) => {
-  res.status(404).send("Page not found - try again!");
+
+
+app.get("/greet", (req,res) => {
+  res.send("Welcome to Express-Playground!")
+  
+})
+
+app.get("/user", (req, res) => {
+  res.json( {
+    name:"Xavier",
+    age:"22",
+    hobby:"Martial Arts",
+  });
 });
 
+// app.use((req, res) => {
+//   res.status(404).send("Page not found - try again!");
+// });
+
+app.use("/status",(req, res) => {
+  res.status(202).send("Server Recieved your request and is proccessing it.")
+})
+
+ app.use((req, res) => {
+  res.status(404).send("This page is unavailble.")
+ })
 app.listen(3000, () => {
   console.log("Practice 1 server running at http://localhost:3000");
 });
