@@ -2,6 +2,8 @@ const express = require("express");
 const app = express();
 app.use(express.json());
 
+//GET routes
+
 // 🧠 GOAL: fill in each route below based on the instructions
 
 // app.get("/welcome", (req, res) => {
@@ -28,18 +30,15 @@ app.get("/random", (req, res) => {
   res.json({ a, b, difference });
 });
 
-
-
-app.get("/greet", (req,res) => {
-  res.send("Welcome to Express-Playground!")
-  
-})
+app.get("/greet", (req, res) => {
+  res.send("Welcome to Express-Playground!");
+});
 
 app.get("/user", (req, res) => {
-  res.json( {
-    name:"Xavier",
-    age:"22",
-    hobby:"Martial Arts",
+  res.json({
+    name: "Xavier",
+    age: "22",
+    hobby: "Martial Arts",
   });
 });
 
@@ -47,13 +46,13 @@ app.get("/user", (req, res) => {
 //   res.status(404).send("Page not found - try again!");
 // });
 
-app.use("/status",(req, res) => {
-  res.status(202).send("Server Recieved your request and is proccessing it.")
-})
+app.use("/status", (req, res) => {
+  res.status(202).send("Server Recieved your request and is proccessing it.");
+});
 
- app.use((req, res) => {
-  res.status(404).send("This page is unavailble.")
- })
+app.use((req, res) => {
+  res.status(404).send("This page is unavailble.");
+});
 app.listen(3000, () => {
   console.log("Practice 1 server running at http://localhost:3000");
 });

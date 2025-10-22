@@ -1,0 +1,28 @@
+// ---------- EXPRESS BASE TEMPLATE ----------
+
+// 1. Import express
+const express = require("express");
+
+// 2. Create an app
+const app = express();
+
+// 3. Add middleware to read JSON
+app.use(express.json());
+
+// 4. Define routes
+app.get("/", (req, res) => {
+  res.send("Server is running!");
+});
+
+//add routes and middleware below
+
+// 5. Start the server on a port (change if needed)
+const PORT = 3000;
+app.listen(PORT, () => {
+  console.log(`Server running at http://localhost:${PORT}`);
+});
+
+
+to run stuff now
+
+npx nodemon server-practice/server_practice_.js

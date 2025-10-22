@@ -16,3 +16,7 @@ app.get("/health", (req, res) => {
 app.listen(3000, () => {
   console.log("Server running at http://localhost:3000");
 });
+
+//Block summary: This is your base server: import → app → JSON parser → one test route → listen.
+
+//👉 For any new practice file, copy this, then add the specific routes/middleware you’re drilling.

@@ -1,0 +1,4 @@
+cd ~/Code
+git clone https://github.com/XCode0033/express-sandbox.git
+cd express-sandbox
+npm install
