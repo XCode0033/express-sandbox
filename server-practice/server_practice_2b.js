@@ -33,6 +33,16 @@ app.get("/sentence/:word1/:word2/:word3", (req, res) => {
   res.send(`${word1} ${word2} ${word3}!`);
 });
 
+
+app.get("/when/:month/:day/:year", (req, res) => {
+  const { month, day, year} = req.params;
+  res.send(`Hello! It's ${month}/${day}/${year}.`);
+})
+
+app.get("/work/:start/:end", (req, res) => {
+  const { start, end } = req.params;
+  res.send(` I work from ${start}am - ${end}pm today`);
+})
 // ⚠️ Express 5 — catch-all 404 handler
 app.use((req, res) => {
   res.status(404).send("Page not found");
