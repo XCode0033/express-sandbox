@@ -13,10 +13,17 @@ const app = express();
 app.post("/login", (req, res) => {
   const {username, password} = req.body;
   res.json ({
-    message: `Welcome back, ${username}!`, success: true 
+    message: `Welcome back, ${username}!, your password is ${password}`, success: true 
   })
 })
 
+
+app.post("/securityQuestions", (req, res) => {
+  const { question1, question2} = req.body;
+  res.json ({
+    message:`What is the security question 1? Answer:${question1}, What is the security question 2? Answer: ${question2}`
+  })
+})
 
 // ⚠️ Express 5 — catch-all 404 handler
 app.use((req, res) => {
