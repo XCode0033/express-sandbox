@@ -27,17 +27,40 @@ app.use((req, res, next) => {
 })
 
 
-//EX-2 Request decoration (attach data to req)
+//EX-2 storing info for later, purpose:tagging requests with data the rest of your app can read
 app.use((req, res, next) => {
   req.requestTime = new Date().toISOString();
   next();
 })
 
-//WID: Adds a requestTime property to req so later routes can use it.
-//Purpose:Demonstates that middleware can enrich the request with shared context(timestamps, user correlation IDs, etc)
+
+//EX-3 route level guards
+//protect certain routes with conditions. Purpose:Restrict access, handle permissions, validate headers'
+const checkKey = (req, res, next) => {
+  if (req.headers["x-api-key"] === "secret123") return next();
+  res.status(403).send("Forbidden");
+};
+
+app.post("/secure", checkKey, (req, res) => {
+  res.send("Access granted!");
+});
+//purpose: restrict access, handle permissions, validate headers
+
+//EX-4 Validation Middleware, check that required data exists.
+const validateTask = (req, res, next) => {
+  const { name, priority } = req.body;
+  if(!name || !priority)
+    return res.status(400).json({ error:"Missing fields"});
+  next()
+}
 
 
 
+app.post("/task", validateTask, req, res => {
+  res.json({ok:true});
+})
+
+//purpose: ensures the oroutes only proccess valid data
 
 
 
