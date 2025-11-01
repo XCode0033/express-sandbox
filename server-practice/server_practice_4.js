@@ -55,19 +55,6 @@ app.post("/secure", checkKey, (req, res) => {
 //real world: /admin/deleteUser is only accessible if req.user.role == 'admin'
 // /api/private-data blocked unless token is valid
 
-//EX-4 Validation Middleware, check that required data exists.
-const validateTask = (req, res, next) => {
-  const { name, priority } = req.body;
-  if(!name || !priority)
-    return res.status(400).json({ error:"Missing fields"});
-  next()
-}
-
-
-
-app.post("/task", validateTask, req, res => {
-  res.json({ok:true});
-})
 
 //purpose: ensures the oroutes only proccess valid data
 //backends version of front ends form submission, essentially double checks
@@ -76,7 +63,59 @@ app.post("/task", validateTask, req, res => {
 
 
 
+//MORE examples
+// ex 1
+app.use((req, res, next) => {
+  console.log(`${req.method} ${req.url}`);
+  next();
+})
+//logs every request
+//runs before any routes, doesn't stop the request, only records info and calls next()
 
+
+//ex 2
+//add timestamp decorator
+app.use((req, res, next) => {
+  req.requestTime = new Date().toISOString();
+  next();
+})
+//purpose: attaches a time tag to each request
+//stores metadata that any route can use later, for example, 
+app.get("/info", (req, res) => res.send(req.requestTime));
+
+
+//example 3, API key guard 
+
+const requireKey = (req, res, next) => {
+  if (req.headers["x-api-key"] === "secret123") next();
+  else res.status(403).send("Access denied");
+}
+
+
+app.get("/secure", requireKey, (req, res) => {
+  res.send("Welcome authorized user!");
+});
+//blocks request that do't include the correct header key.
+//runs before the route logic, decides if it's allowed to continue
+
+
+//Validator Middleware
+
+const validateTask = (req, res, next) => {
+  if (!req.body.task) return res.status(400).send("Missing task field");
+  next();
+}
+
+app.post("/task", validateTask, (req, res) => {
+  res.send(`Task '${req.body.task} recieved.`);
+});
+
+//Error Handler
+
+app.use((err, req, res, next) => {
+  console.error("ERROR", err.message);
+  res.status(500).json({error: err.message});
+})
 
 
 /////////////////
@@ -99,6 +138,9 @@ app.listen(3003, () => {
   console.log("Server Practice 4 running at http://localhost:3003");
 });
 
+
+
+//more examples
 // npx nodemon server-practice/server_practice_4.js
 
 
