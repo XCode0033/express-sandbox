@@ -128,11 +128,6 @@ app.use((req, res) => {
   res.status(404).send("Page not found");
 });
 
-app.unsubscribe((err, req, res, next => {
-  console.error("ERR:", err.message);
-  res.status(500).json({error:err.message });
-}));
-
 // 🟢 Start the server
 app.listen(3003, () => {
   console.log("Server Practice 4 running at http://localhost:3003");
