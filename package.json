@@ -11,8 +11,8 @@
     "dev:4": "nodemon server-practice/server_practice_4.js",
     "dev:5": "nodemon server-practice/server_practice_5.js",
     "dev:6": "nodemon server-practice/server_practice_6.js",
-    "dev:7": "nodemon server-practice/server_practice_7.js"
-    
+    "dev:7": "nodemon server-practice/server_practice_7.js",
+    "dev:8": "nodemon server-practice/server_practice_a.js"
   },
   "keywords": [],
   "author": "",
