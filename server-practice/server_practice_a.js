@@ -138,7 +138,7 @@ app.post("/signup", (req, res) => {
   const { username, password } = req.body;
   if (!username || !password) return res.status(400).send("Missing data");
   res.send(`Signed up as ${username}`);
-});
+})
 
 //8
 app.post("/login", (req, res) => {
