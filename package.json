@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node server-practice/server_practice_1.js",
+    "start": "node app.js",
     "dev:1": "nodemon server-practice/server_practice_1.js",
     "dev:2": "nodemon server-practice/server_practice_2.js",
     "dev:3": "nodemon server-practice/server_practice_3.js",
@@ -12,7 +12,9 @@
     "dev:5": "nodemon server-practice/server_practice_5.js",
     "dev:6": "nodemon server-practice/server_practice_6.js",
     "dev:7": "nodemon server-practice/server_practice_7.js",
-    "dev:8": "nodemon server-practice/server_practice_a.js"
+    "dev:8": "nodemon server-practice/server_practice_a.js",
+    "dev:9": "nodemon app.js",
+    "dev:10": "nodemon practiceApp.js"
   },
   "keywords": [],
   "author": "",
