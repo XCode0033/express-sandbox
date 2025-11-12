@@ -136,7 +136,7 @@ app.listen(3003, () => {
 
 
 //more examples
-// npx nodemon server-practice/server_practice_4.js
+// npx nodemon server-practice/server_practice_4b.js
 
 
 

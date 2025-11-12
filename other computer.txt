@@ -2,3 +2,5 @@ cd ~/Code
 git clone https://github.com/XCode0033/express-sandbox.git
 cd express-sandbox
 npm install
+
+npx nodemon server-practice/server_practice_4b.js
