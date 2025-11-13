@@ -1,5 +1,4 @@
 const express = require("express");
-<<<<<<< HEAD
 const router = express.Router();
 
 //Middleware that only runs for THIS router
@@ -23,11 +22,3 @@ router.post("/", (req, res) => {
 });
 
 module.exports = router; //Export so main app can use it
-=======
-const app = express();
-
-
-
-
-app.listen(3011, () => console.log("http://localhost:3011"));
->>>>>>> 9f0e5c399aa7552751df2c84f87716f303eef891
